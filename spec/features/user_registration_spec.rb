@@ -19,5 +19,12 @@ scenario 'new user signs up from the front page with valid email' do
   click_button 'Sign up'
   expect(page).to have_content('Welcome! You have signed up successfully.')
   end
+
+scenario 'new user signs up from the front page with valid email' do 
+  visit '/'
+  click_on 'Sign up'
+  click_button 'Sign up'
+  expect(page).to have_content("Email can't be blank")
+  end
 end
 
