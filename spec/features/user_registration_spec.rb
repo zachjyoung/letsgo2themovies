@@ -8,7 +8,7 @@ feature 'User can register a account', %Q{
   So I can review movies
 }do 
 
-let(:user) { FactoryGirl.create(:user) }
+let(:user) { FactoryGirl.build(:user) }
 
 scenario 'new user signs up from the front page with valid email' do 
   visit '/'
@@ -16,7 +16,8 @@ scenario 'new user signs up from the front page with valid email' do
   fill_in 'Email', with: user.email
   fill_in 'Password', with: user.password
   fill_in 'Password confirmation', with: user.password
-  expect(page).to have_content('Thanks for signing up!')
+  click_button 'Sign up'
+  expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 end
 
