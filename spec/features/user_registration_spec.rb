@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-
-
 feature 'User can register a account', %Q{
   As a User
   I want to register 
