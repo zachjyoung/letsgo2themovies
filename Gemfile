@@ -32,7 +32,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-
 group :development, :test do 
   gem 'capybara'
   gem 'launchy'
@@ -40,7 +39,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'pry'
+  gem 'pry-rails'
 end
 
 gem 'devise'
