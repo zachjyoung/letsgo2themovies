@@ -22,7 +22,7 @@ So that others can review it
 
     new_movie = Movie.last
     expect(page).to have_content("John Doe")
-    expect(new_movie).to include("John Doe")
+    expect(new_movie.director).to include("John Doe")
     
   end
 end
