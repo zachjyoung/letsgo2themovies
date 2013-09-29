@@ -10,8 +10,10 @@ So that others can review it
 # * User is signed in 
 # * User is given the option to add a movie to be reviewed 
 # * User is given the option to upload a picture 
+let(:user) {FactoryGirl.create(:user)}
   
   scenario 'user adds a valid movie' do
+    sign_in_as(user)
     visit new_movie_path
     fill_in 'Title', with: "Fake" 
     fill_in 'Year', with: 2004
@@ -24,5 +26,10 @@ So that others can review it
     expect(page).to have_content("John Doe")
     expect(new_movie.director).to include("John Doe")
     
+  end
+
+  scenario 'user cannot add movie when signed in' do
+      visit new_movie_path
+      expect(page).to have_content("You must be signed in before adding a movie.")
   end
 end
