@@ -1,4 +1,6 @@
 Letsgo2themovies::Application.routes.draw do
+  resources :reviews
+
   resources :movies
 
   devise_for :users

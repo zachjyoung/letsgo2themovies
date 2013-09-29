@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  has_many :reviews,
+    inverse_of: :movie
   validates_presence_of :title
   validates_presence_of :year
   validates_presence_of :description
