@@ -48,6 +48,12 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter'
+gem 'fb_graph'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
