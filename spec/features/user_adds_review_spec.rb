@@ -18,6 +18,9 @@ feature 'User adds review to individual movie page', %Q{
     visit movie_path(movie.id)
     click_on "Add Review"
     fill_in 'Review', with: "The Happening was the biggest piece of shit movie of all time"
+    select(2, :from =>  'Rating')
+    click_on 'Submit Review'
+    expect(page).to have_content "The Happening was the biggest piece of shit movie of all time"
 
   end
 end
