@@ -15,7 +15,8 @@ let (:user) { FactoryGirl.build(:user) }
 
   scenario 'after I create an account, I can upload a photo' do
     login_user(user)
-    attach_file('photo_attachment', 'spec/features/images/stupid.jpeg')
-    click_button 'Submit you photo'
+    visit edit_user_registration_path
+    attach_file('Image', 'spec/features/images/stupid.jpeg')
+    click_button 'Update'
   end
 end
