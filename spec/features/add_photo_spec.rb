@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+
+
 feature 'upload photo', %Q{
   As a user 
   I want to upload a photo
@@ -18,5 +20,15 @@ let (:user) { FactoryGirl.build(:user) }
     visit edit_user_registration_path
     attach_file('Image', 'spec/features/images/stupid.jpeg')
     click_button 'Update'
+  end
+
+  scenario 'I can see my photo' do 
+    login_user(user)
+    visit edit_user_registration_path
+    attach_file('Image', 'spec/features/images/stupid.jpeg')
+    click_button 'Update'
+
+    visit '/'
+    expect(page).to have_image "stupid.jpeg"
   end
 end

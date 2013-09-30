@@ -40,6 +40,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.include LoginHelper, :type => :feature
+  config.include Capybara, :type => :feature
 end
 
 
