@@ -1,5 +1,9 @@
 Letsgo2themovies::Application.routes.draw do
-  resources :movies
+  
+
+  resources :movies do
+    resources :reviews  
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

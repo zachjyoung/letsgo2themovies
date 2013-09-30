@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :movie do
-    title "MyString"
-    year 1
-    description "MyText"
-    director "MyString"
-    cast "MyString"
+    title "Pulp Fiction"
+    year 1994
+    description "5 vignettes of awesomeness"
+    director "Quentin Tarintino"
+    cast "John Travolta, Samuel L. Jackson, Bruce Willis"
   end
 end
