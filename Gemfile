@@ -48,6 +48,8 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 
+gem "fog"
+
 #Look at all this Omniauth
 gem 'omniauth'
 gem 'omniauth-github'
