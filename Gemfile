@@ -49,6 +49,7 @@ gem 'rmagick'
 gem 'carrierwave'
 
 gem 'omniauth'
+gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'twitter'
