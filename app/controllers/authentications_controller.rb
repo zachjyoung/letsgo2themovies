@@ -1,2 +1,2 @@
-class AuthenticationsController < ApplicationController
+class AuthenticationsController < Devise::OmniauthCallbacksController 
 end
