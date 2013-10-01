@@ -1,6 +1,8 @@
 Letsgo2themovies::Application.routes.draw do
   
 
+  resources :authentications
+
   resources :movies do
     resources :reviews  
   end
