@@ -53,8 +53,17 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 
+<<<<<<< HEAD
 
 gem "fog"
+=======
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter'
+gem 'fb_graph'
+>>>>>>> parent of a62d534... github login works not twitter or facebook
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

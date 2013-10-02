@@ -4,10 +4,13 @@ Letsgo2themovies::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+<<<<<<< HEAD
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'home#index'
 
+=======
+>>>>>>> parent of a62d534... github login works not twitter or facebook
   resources :movies do
     resources :reviews  
   end
