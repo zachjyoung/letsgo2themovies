@@ -228,12 +228,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
-<<<<<<< HEAD
-=======
-  omniauth
-  omniauth-facebook
-  omniauth-twitter
->>>>>>> parent of 45761e9... bundled omniauth preparing next stage
   pg
   pry-rails
   rails (= 4.0.0)
