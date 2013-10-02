@@ -21,7 +21,11 @@
  <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %></li>
  <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %></li>
  <li><%= link_to "Github", user_omniauth_authorize_path(:github) %></li>
+
 <% end %>
+
+<li><%= link_to "ADDD MOOOOBIES!", new_movie_path %></li>
+<li><%= link_to "MOOOVIES", movies_path %></li>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>
