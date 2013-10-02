@@ -55,13 +55,6 @@ gem 'carrierwave'
 
 gem "fog"
 
-#Look at all this Omniauth
-gem 'omniauth'
-gem 'omniauth-github'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'twitter'
-gem 'fb_graph'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
