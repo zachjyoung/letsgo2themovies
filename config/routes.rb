@@ -8,9 +8,6 @@ Letsgo2themovies::Application.routes.draw do
   # root 'welcome#index'
   root 'home#index'
 
-
-   resources :authentications
-
   resources :movies do
     resources :reviews  
   end

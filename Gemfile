@@ -53,8 +53,8 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 
-gem "fog"
 
+gem "fog"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

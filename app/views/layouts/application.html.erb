@@ -8,7 +8,10 @@
 </head>
 <body>
 
+
+
 <% if user_signed_in? %>
+
  Logged in as <strong><%= current_user.email %></strong>.
  <%= link_to 'Edit profile', edit_user_registration_path %> |
  <%= link_to 'Authentications', authentications_path %> |
@@ -26,6 +29,16 @@
 
 <li><%= link_to "ADDD MOOOOBIES!", new_movie_path %></li>
 <li><%= link_to "MOOOVIES", movies_path %></li>
+
+<%= link_to 'Edit profile', edit_user_registration_path %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
+<%= image_tag(current_user.image_url(:thumb).to_s) %>
+<% else %>
+<%= link_to 'Sign up', new_user_registration_path %>
+<%= link_to 'Sign in', user_session_path %>
+<% end %>
+
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>
