@@ -42,11 +42,26 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'dotenv-rails'
+end
+
+group :production do 
+  gem 'rails_12factor'
 end
 
 gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
+
+gem "fog"
+
+#Look at all this Omniauth
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter'
+gem 'fb_graph'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

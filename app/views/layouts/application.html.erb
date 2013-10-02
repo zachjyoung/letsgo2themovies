@@ -8,18 +8,24 @@
 </head>
 <body>
 
-
-
 <% if user_signed_in? %>
-<%= link_to 'Edit profile', edit_user_registration_path %>
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+ Logged in as <strong><%= current_user.email %></strong>.
+ <%= link_to 'Edit profile', edit_user_registration_path %> |
+ <%= link_to 'Authentications', authentications_path %> |
+ <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+ <%= image_tag(current_user.image_url(:thumb).to_s) %>
 
-<%= image_tag(current_user.image_url(:thumb).to_s) %>
 <% else %>
-<%= link_to 'Sign up', new_user_registration_path %>
-<%= link_to 'Sign in', user_session_path %>
+ <%= link_to "Sign up", new_user_registration_path %> |
+ <%= link_to "Login", new_user_session_path %>
+ <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %></li>
+ <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %></li>
+ <li><%= link_to "Github", user_omniauth_authorize_path(:github) %></li>
+
 <% end %>
 
+<li><%= link_to "ADDD MOOOOBIES!", new_movie_path %></li>
+<li><%= link_to "MOOOVIES", movies_path %></li>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>
