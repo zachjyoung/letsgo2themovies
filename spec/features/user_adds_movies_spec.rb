@@ -30,6 +30,6 @@ let(:user) {FactoryGirl.create(:user)}
 
   scenario 'user cannot add movie when signed in' do
       visit new_movie_path
-      expect(page).to have_content("You must be signed in before adding a movie.")
+      expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 end
