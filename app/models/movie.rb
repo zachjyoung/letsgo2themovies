@@ -1,6 +1,9 @@
 class Movie < ActiveRecord::Base
+  mount_uploader :image, ImageUploader 
   has_many :reviews,
     inverse_of: :movie
+
+
   validates_presence_of :title
   validates_presence_of :year
   validates_presence_of :description
