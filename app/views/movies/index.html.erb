@@ -1,8 +1,20 @@
-<h1>LOOOK AT ALL OF THESE MMOOOOOBIES</h1>
+<h1>Movies</h1>
 
-<ul>
-<% @movies.each do |movie| %>
-  <li><%= link_to "#{movie.title}", movie %> </li>
+<div class="row">
+  <% @movies.each do |movie| %>
+  <div class="col-sm-2 col-md-2 col-lg-1">
+    <div class="thumbnail">
+      <% if movie.image.present? %>
+      <%= link_to image_tag(movie.image_url(:mini_poster).to_s), movie %>
+      <% else %>
+      <%= link_to image_tag("coming_soon.gif", :size => "140x207", :alt => movie.title), movie %>
+      <% end %>
+      <div class="caption">
+        <%= link_to "#{movie.title}", movie %> 
+        <p><%= truncate(movie.description, length: 50 ) %></p>
+     <!--    <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p> -->
+      </div>
+    </div>
+  </div>
   <% end %>
-
-</ul>
+</div>
