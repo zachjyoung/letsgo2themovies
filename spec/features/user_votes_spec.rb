@@ -18,15 +18,43 @@ feature "User casts a vote", %Q{
   scenario "user makes a valid upvote" do
     sign_in_as(user)
     visit movie_path(movie)
-    save_and_open_page
-    within "#user_#{user.id}" do
-      find("#upvote").click
+
+    within "#upvote" do
+      click_on "+"
     end
-    
+      
     vote = Vote.last
-    expect(vote).to exist
-    expect(review.vote_count).to eql(1)
-    # @vote_count = (Vote.where(:value = 1).count) + (Vote.where(:value = -1)) 
+    expect(vote.value).to eql(1)
+    expect(review.total_score).to eql(1)
   end 
+
+  scenario "user makes a valid downvote" do
+    sign_in_as(user)
+    visit movie_path(movie)
+
+    within "#downvote" do
+      click_on "-"
+    end
+
+    vote = Vote.last
+    expect(vote.value).to eql(-1)
+    expect(review.total_score).to eql(-1)
+  end
+
+  scenario "user can only make one vote" do
+    sign_in_as(user)
+    visit movie_path(movie)
+
+    within "#downvote" do
+      click_on "-"
+    end
+
+    within "#downvote" do
+      click_on "-"
+    end
+
+    expect(review.total_score).to eql(-1) 
+    expect(page).to have_content("You can only vote once in either direction.")   
+  end
 end
 

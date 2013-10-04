@@ -29,17 +29,22 @@
 
 <%= link_to "Add Review", new_movie_review_path(@movie) %>
 
-<% @reviews.each do |review| %>
+<% @movie.reviews.each do |review| %>
   <div id="user_<%= review.user_id %>">
-    <%= simple_form_for @vote do |f| %>
-      <a id="upvote"> 
+    <%= simple_form_for [review, @vote] do |f| %>
+      <div id="upvote"> 
         <%= f.hidden_field :value, value: 1 %>
         <%= f.button :submit, "+" %>
-      </a>
+      </div>
     <% end %>
-    <%= review.vote_count %>
-  <a id="downvote"> - </a>
-    <%= review.rating%>
-    <%= review.body%>
+    <%= review.total_score %>
+  <%= simple_form_for [review, @vote] do |f| %>
+      <div id="downvote"> 
+        <%= f.hidden_field :value, value: -1 %>
+        <%= f.button :submit, "-" %>
+      </div>
+    <% end %>
+  <%= review.rating%>
+  <%= review.body%>
   </div>
 <% end %>

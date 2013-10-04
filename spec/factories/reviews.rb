@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :review do
     body "DIS IS DA BOMB"
     rating 4
+    vote_count 0
     association :movie
     association :user
   end

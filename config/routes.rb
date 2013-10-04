@@ -9,8 +9,13 @@ Letsgo2themovies::Application.routes.draw do
   root 'home#index'
 
   resources :movies do
-    resources :reviews  
+    resources :reviews 
   end
+
+  resources :reviews do
+      resources :votes
+  end
+
 
   devise_for :users
     

@@ -57,11 +57,14 @@ ActiveRecord::Schema.define(version: 20131004160247) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
-    t.integer  "value",      null: false
-    t.integer  "review_id",  null: false
-    t.integer  "user_id",    null: false
+    t.integer  "value",         null: false
+    t.integer  "voteable_id",   null: false
+    t.string   "voteable_type", null: false
+    t.integer  "user_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
 
 end
