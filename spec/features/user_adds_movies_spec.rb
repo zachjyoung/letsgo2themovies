@@ -28,6 +28,17 @@ let(:user) {FactoryGirl.create(:user)}
     
   end
 
+  scenario 'user adds a non-valid movie' do 
+    prev_count = Movie.count
+    sign_in_as(user)
+    visit new_movie_path
+    click_on "Create Movie"
+
+    expect(Movie.count).to eql(prev_count)
+    expect(page).to have_content("can't be blank")
+  end
+
+
   scenario 'user cannot add movie when signed in' do
       visit new_movie_path
       expect(page).to have_content("You need to sign in or sign up before continuing.")
