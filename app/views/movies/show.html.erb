@@ -1,7 +1,7 @@
 
  <div class="row">
     <% if @movie.image.present? %>
-    <%= image_tag(@movie.image_url.to_s)%>
+    <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
       <% else %>
       <%= image_tag("coming_soon.gif", :size => "214x317", :alt => @movie.title) %>
       <% end %>
@@ -11,7 +11,7 @@
 
     <h1> <%= @movie.title %> </h1>
 
-    
+    <h4>User Rating</h4>
 
 
     <p>
@@ -34,15 +34,17 @@
       <%= @movie.cast %>
     </p>
 
-  
+  </div>  
+
+  <div class="col-md-10" >
   <h3>Reviews</h3>
   <% if current_user.present? %>
-    <%= link_to "Add Review", new_movie_review_path(@movie) %>
+    <%= button_to "Add Review", new_movie_review_path(@movie), :class => "btn btn-primary" %>
     <% else %>
     <%= link_to "Sign in to review this movie", new_user_session_path %>
     <% end %>
 
-    <% @reviews.each do |review| %><br>
+    <% @reviews.each do |review| %><p>
       <%= review.rating%><br>
       <%= review.body%><br>
       <%= image_tag(review.user.image_url(:thumb).to_s) %>
@@ -50,7 +52,5 @@
       <%= review.created_at.to_date.to_formatted_s(:long) %>
       
     <% end %>
-
-
-
+    </div>
 </div>

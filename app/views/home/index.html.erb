@@ -16,10 +16,10 @@
       <%= link_to image_tag("coming_soon.gif", :size => "140x207", :alt => movie.title), movie %>
       <% end %>
       <div class="carousel-caption">
-        ...
+        <%= link_to "#{movie.title}", movie %> 
       </div>
     </div>
-    ...
+    <%= truncate(movie.description, length: 400 ) %>
   </div>
 
   <!-- Controls -->
