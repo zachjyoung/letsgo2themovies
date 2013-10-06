@@ -8,4 +8,6 @@ describe Review do
   it { should_not have_valid(:rating).when(nil, "", "not")}
 
   it {should belong_to(:movie)}
+
+  it { should belong_to(:user) }
 end

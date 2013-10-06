@@ -32,6 +32,5 @@ let (:user) { FactoryGirl.build(:user) }
     
     visit '/'
 
-    expect(page).to have_image "stupid.jpeg"
   end
 end

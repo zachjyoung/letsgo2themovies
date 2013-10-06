@@ -1,33 +1,56 @@
-<h1> <%= @movie.title %> </h1>
 
-<%= image_tag(@movie.image_url.to_s) %>
-
-
-<p>
-  <strong>Year:</strong>
-  <%= @movie.year %>
-</p>
-
-<p>
-  <strong>Description</strong>
-  <%= @movie.description %>
-</p>
-
-<p>
-  <strong>Director</strong>
-  <%= @movie.director %>
-</p>
-
-<p>
-  <strong>Cast</strong>
-  <%= @movie.cast %>
-</p>
-
-<%= link_to "Add Review", new_movie_review_path(@movie) %>
-
-<% @reviews.each do |review| %>
-<%= review.user %>
-  <%= review.rating%>
-  <%= review.body%>
+ <div class="row">
+    <% if @movie.image.present? %>
+    <%= image_tag(@movie.image_url.to_s)%>
+      <% else %>
+      <%= image_tag("coming_soon.gif", :size => "140x207", :alt => @movie.title) %>
+      <% end %>
   
-<% end %>
+
+  <div class="col-md-7" >
+
+    <h1> <%= @movie.title %> </h1>
+
+    <%= image_tag(@movie.image_url.to_s) %>
+
+
+    <p>
+      <strong>Year:</strong>
+      <%= @movie.year %>
+    </p>
+
+    <p>
+      <strong>Description</strong>
+      <%= @movie.description %>
+    </p>
+
+    <p>
+      <strong>Director</strong>
+      <%= @movie.director %>
+    </p>
+
+    <p>
+      <strong>Cast</strong>
+      <%= @movie.cast %>
+    </p>
+
+  
+  <h3>Reviews</h3>
+  <% if current_user.present? %>
+    <%= link_to "Add Review", new_movie_review_path(@movie) %>
+    <% else %>
+    <%= link_to "Sign in to review this movie", new_user_session_path %>
+    <% end %>
+
+    <% @reviews.each do |review| %><br>
+      <%= review.rating%><br>
+      <%= review.body%><br>
+      <%= image_tag(review.user.image_url(:thumb).to_s) %>
+      <%= review.user.username %>
+      <%= review.created_at.to_date.to_formatted_s(:long) %>
+      
+    <% end %>
+
+
+
+</div>

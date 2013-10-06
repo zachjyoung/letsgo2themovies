@@ -2,7 +2,7 @@
 
 <div class="row">
   <% @movies.each do |movie| %>
-  <div class="col-sm-2 col-md-2 col-lg-1">
+  <div class="col-sm-3 col-md-3 col-lg-3">
     <div class="thumbnail">
       <% if movie.image.present? %>
       <%= link_to image_tag(movie.image_url(:mini_poster).to_s), movie %>
