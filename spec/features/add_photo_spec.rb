@@ -23,15 +23,4 @@ let (:user) { FactoryGirl.build(:user) }
     click_button 'Update'
   end
 
-  scenario 'I can see my photo' do 
-    login_user(user)
-    visit edit_user_registration_path
-    fill_in "Current password", with: user.password
-    attach_file('Image', 'spec/features/images/stupid.jpeg')
-    click_button 'Update'
-    
-    visit '/'
-
-    expect(page).to have_image "stupid.jpeg"
-  end
 end

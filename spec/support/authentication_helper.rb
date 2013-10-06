@@ -7,4 +7,5 @@ module AuthenticationHelper
 
     expect(page).not_to have_content "Not found"
   end
+
 end

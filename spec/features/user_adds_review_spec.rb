@@ -22,6 +22,8 @@ feature 'User adds review to individual movie page', %Q{
     click_on 'Submit Review'
     expect(page).to have_content "The Happening was the biggest piece of shit movie of all time"
 
+    new_review = Review.last
+    expect(new_review.user_id).to eql(user.id)
   end
 
   scenario 'user adds invlaid review' do
