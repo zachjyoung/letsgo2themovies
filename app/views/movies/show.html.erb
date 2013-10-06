@@ -1,4 +1,3 @@
-
  <div class="row">
     <% if @movie.image.present? %>
     <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
@@ -54,3 +53,53 @@
     <% end %>
     </div>
 </div>
+
+<%= image_tag(@movie.image_url.to_s) %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @movie.year %>
+</p>
+
+<p>
+  <strong>Description</strong>
+  <%= @movie.description %>
+</p>
+
+<p>
+  <strong>Director</strong>
+  <%= @movie.director %>
+</p>
+
+<p>
+  <strong>Cast</strong>
+  <%= @movie.cast %>
+</p>
+
+<%= link_to "Add Review", new_movie_review_path(@movie) %>
+
+<% @movie.reviews.each do |review| %>
+  <div id="user_<%= review.user_id %>">
+    <%= simple_form_for [review, @vote] do |f| %>
+      <div id="upvote"> 
+        <%= f.hidden_field :value, value: 1 %>
+        <%= f.button :submit, "+" %>
+      </div>
+    <% end %>
+    <%= review.total_score %>
+  <%= simple_form_for [review, @vote] do |f| %>
+      <div id="downvote"> 
+        <%= f.hidden_field :value, value: -1 %>
+        <%= f.button :submit, "-" %>
+      </div>
+    <% end %>
+  <%= review.rating%>
+  <%= review.body%>
+  </div>
+<% end %>
+

@@ -13,12 +13,14 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to movie_path(@movie)
+    else 
+      render action: 'new'
     end
   end
 
   def show
     @movie = Movie.find(params[:id])
-    @reviews = Review.where(movie_id: @movie.id)
+    @vote = Vote.new
   end
 
   private

@@ -2,7 +2,10 @@
 
 FactoryGirl.define do
   factory :review do
-    body "MyText"
-    movie_id 1
+    body "DIS IS DA BOMB"
+    rating 4
+    vote_count 0
+    association :movie
+    association :user
   end
 end
