@@ -3,7 +3,7 @@
     <% if @movie.image.present? %>
     <%= image_tag(@movie.image_url.to_s)%>
       <% else %>
-      <%= image_tag("coming_soon.gif", :size => "140x207", :alt => @movie.title) %>
+      <%= image_tag("coming_soon.gif", :size => "214x317", :alt => @movie.title) %>
       <% end %>
   
 
@@ -11,7 +11,7 @@
 
     <h1> <%= @movie.title %> </h1>
 
-    <%= image_tag(@movie.image_url.to_s) %>
+    
 
 
     <p>
