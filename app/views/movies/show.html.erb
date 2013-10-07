@@ -43,45 +43,10 @@
     <%= link_to "Sign in to review this movie", new_user_session_path %>
     <% end %>
 
-    <% @reviews.each do |review| %><p>
-      <%= review.rating%><br>
-      <%= review.body%><br>
-      <%= image_tag(review.user.image_url(:thumb).to_s) %>
-      <%= review.user.username %>
-      <%= review.created_at.to_date.to_formatted_s(:long) %>
-      
-    <% end %>
+
+
     </div>
 </div>
-
-<%= image_tag(@movie.image_url.to_s) %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @movie.year %>
-</p>
-
-<p>
-  <strong>Description</strong>
-  <%= @movie.description %>
-</p>
-
-<p>
-  <strong>Director</strong>
-  <%= @movie.director %>
-</p>
-
-<p>
-  <strong>Cast</strong>
-  <%= @movie.cast %>
-</p>
-
-<%= link_to "Add Review", new_movie_review_path(@movie) %>
 
 <% @movie.reviews.each do |review| %>
   <div id="user_<%= review.user_id %>">
@@ -98,6 +63,9 @@
         <%= f.button :submit, "-" %>
       </div>
     <% end %>
+
+  <%= image_tag(review.user.image_url(:thumb).to_s) %>
+  <%= review.user.username %>
   <%= review.rating%>
   <%= review.body%>
   </div>
