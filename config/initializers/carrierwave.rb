@@ -14,18 +14,20 @@ CarrierWave.configure do |config|
     :aws_access_key_id     => 'S3_KEY',
     :aws_secret_access_key => 'S3_SECRET'
   }
+
+  config.fog_directory  = 'letsgo2themovies'                     # required
  
-  # For testing, upload files to local `tmp` folder.
-  if Rails.env.test? || Rails.env.development?
-    config.storage = :file
-    config.enable_processing = false
-    config.root = "#{Rails.root}/tmp"
-  else
-    config.storage = :fog
-  end
+  # # For testing, upload files to local `tmp` folder.
+  # if Rails.env.test? || Rails.env.development?
+  #   config.storage = :file
+  #   config.enable_processing = false
+  #   config.root = "#{Rails.root}/tmp"
+  # else
+  #   config.storage = :fog
+  # end
  
-  config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
+  # config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
  
-  config.fog_directory    = ENV['letsgo2themovies']
+  # config.fog_directory    = ENV['letsgo2themovies']
 
 end
