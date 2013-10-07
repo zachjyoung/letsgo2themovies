@@ -27,6 +27,12 @@
   <%= @movie.cast %>
 </p>
 
+<p>
+ <%if @movie.draft?%>
+  Your draft is waiting for approval
+ <% end %>
+</p>
+
 <%= link_to "Add Review", new_movie_review_path(@movie) %>
 
 <% @movie.reviews.each do |review| %>

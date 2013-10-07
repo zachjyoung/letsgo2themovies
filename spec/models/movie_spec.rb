@@ -18,4 +18,7 @@ describe Movie do
   it {should have_valid(:cast).when('Keenau Reeves', 'Laurence Fishbourne', 'Carrie Moss') }
   it {should_not have_valid(:cast).when('', nil)}
 
+  it {should have_valid(:state).when("draft")}
+  it {should_not have_valid(:state).when("", nil)}
+
 end
