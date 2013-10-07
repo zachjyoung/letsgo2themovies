@@ -32,23 +32,29 @@
     <p>
       <strong>Cast</strong>
       <%= @movie.cast %>
-    </p>
+    </p> 
 
 
     <%= link_to "Update BLERGH", edit_movie_path, :class => "btn btn-primary" %>
 
   </div>  
 
+    <p>
+     <%if @movie.draft?%>
+        Your draft is waiting for approval
+        <%= simple_form_for @movie do |f|%>
+          <%= f.button :submit, "Submit post" %>
+        <% end %>
+      <% end %>
+    </p>
+
   <div class="col-md-10" >
   <h3>Reviews</h3>
   <% if current_user.present? %>
-    <%= button_to "Add Review", new_movie_review_path(@movie), :class => "btn btn-primary" %>
+    <%= link_to "Add Review", new_movie_review_path(@movie), :class => "btn btn-primary" %>
     <% else %>
     <%= link_to "Sign in to review this movie", new_user_session_path %>
     <% end %>
-
-
-
 
 <% @movie.reviews.each do |review| %>
   <div id="user_<%= review.user_id %>">

@@ -4,7 +4,9 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all 
     @search = Movie.search(params[:q])
-    @movies = @search.result
+    @movies = @search.result.where(state: "submitted")
+    # @movies = Movie.where(state: "submitted")
+
   end
   
   def new
@@ -36,6 +38,12 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @vote = Vote.new
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    @movie.submit
+    redirect_to movie_path(@movie)
   end
 
   private
