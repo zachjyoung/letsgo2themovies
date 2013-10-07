@@ -16,7 +16,7 @@ class Movie < ActiveRecord::Base
 
   state_machine initial: :draft do
     event :submit do
-      transition :draft => :submit
+      transition :draft => :submitted
     end
   end 
   

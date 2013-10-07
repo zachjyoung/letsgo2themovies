@@ -30,6 +30,9 @@
 <p>
  <%if @movie.draft?%>
   Your draft is waiting for approval
+    <%= simple_form_for @movie do |f|%>
+      <%= f.button :submit, "Submit post" %>
+    <% end %>
  <% end %>
 </p>
 
