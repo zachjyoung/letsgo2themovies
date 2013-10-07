@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all 
     @search = Movie.search(params[:q])
     @movies = @search.result.where(state: "submitted")
-    # @movies = Movie.where(state: "submitted")
+   
 
   end
   

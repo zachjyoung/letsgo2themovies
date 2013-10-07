@@ -1,44 +1,46 @@
 
-    <% if @movie.image.present? %>
-    <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
-      <% else %>
-      <%= image_tag("coming_soon.gif", :size => "214x317", :alt => @movie.title) %>
-      <% end %>
-
   
+  <div class="row">
+    <div class="col-md-8">
+      <h1> <%= @movie.title %> </h1>
 
-  <div class="col-md-7" >
-
-    <h1> <%= @movie.title %> </h1>
-
-    <h4>User Rating</h4>
-
-
-    <p>
-      <strong>Year:</strong>
-      <%= @movie.year %>
-    </p>
-
-    <p>
-      <strong>Description</strong>
-      <%= @movie.description %>
-    </p>
-
-    <p>
-      <strong>Director</strong>
-      <%= @movie.director %>
-    </p>
-
-    <p>
-      <strong>Cast</strong>
-      <%= @movie.cast %>
-    </p> 
+      <h4>User Rating</h4>
 
 
-    <%= link_to "Update BLERGH", edit_movie_path, :class => "btn btn-primary" %>
+      <p>
+        <strong>Year:</strong>
+        <%= @movie.year %>
+      </p>
+
+      <p>
+        <strong>Description</strong>
+        <%= @movie.description %>
+      </p>
+
+      <p>
+        <strong>Director</strong>
+        <%= @movie.director %>
+      </p>
+
+      <p>
+        <strong>Cast</strong>
+        <%= @movie.cast %>
+      </p> 
+
+
+      <%= link_to "Update Movie", edit_movie_path, :class => "btn btn-primary" %>
+    </div>
+
+    <div class="col-md-4">
+      <% if @movie.image.present? %>
+        <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
+      <% else %>
+        <%= image_tag("coming_soon.gif", :size => "214x317", :alt => @movie.title) %>
+      <% end %>
+    </div>
 
   </div>  
-
+ 
     <p>
      <%if @movie.draft?%>
         Your draft is waiting for approval
@@ -48,35 +50,36 @@
       <% end %>
     </p>
 
-  <div class="col-md-10" >
   <h3>Reviews</h3>
   <% if current_user.present? %>
     <%= link_to "Add Review", new_movie_review_path(@movie), :class => "btn btn-primary" %>
-    <% else %>
+  <% else %>
     <%= link_to "Sign in to review this movie", new_user_session_path %>
-    <% end %>
+   <% end %>
 
-<% @movie.reviews.each do |review| %>
-  <div id="user_<%= review.user_id %>">
-    <%= simple_form_for [review, @vote] do |f| %>
-        <%= f.hidden_field :value, value: 1 %>
-        <%= f.button :submit, "+" %>
-      </div>
-    <% end %>
-    <%= review.total_score %>
-  <%= simple_form_for [review, @vote] do |f| %>
-      <div id="downvote"> 
-        <%= f.hidden_field :value, value: -1 %>
-        <%= f.button :submit, "-" %>
-      </div>
-    <% end %>
+  <% @movie.reviews.each do |review| %>
+    <div id="user_<%= review.user_id %>">
+      <%= simple_form_for [review, @vote] do |f| %>
+        <div id="upvote"> 
+          <%= f.hidden_field :value, value: 1 %>
+          <%= f.button :submit, "+" %>
+        </div>
+      <% end %>
+      <%= review.total_score %>
+      <%= simple_form_for [review, @vote] do |f| %>
+        <div id="downvote"> 
+          <%= f.hidden_field :value, value: -1 %>
+          <%= f.button :submit, "-" %>
+        </div>
+      <% end %>
 
-  <%= image_tag(review.user.image_url(:thumb).to_s) %>
-  <%= review.user.username %>
-  <%= review.rating%>
-  <%= review.body%>
-<% end %>
-</div>
+      <%= image_tag(review.user.image_url(:thumb).to_s) %>
+      <%= review.user.username %>
+      <%= review.rating%>
+      <%= review.body%>
+    </div>
+  <% end %>
+
 
 
 

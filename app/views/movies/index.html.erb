@@ -24,9 +24,8 @@
       <%= link_to image_tag("coming_soon.gif", :size => "140x207", :alt => movie.title), movie %>
       <% end %>
       <div class="caption">
-        <%= link_to "#{movie.title}", movie %> 
+        <%= link_to truncate(movie.title, length: 18 ), movie %> 
         <p><%= truncate(movie.description, length: 50 ) %></p>
-     <!--    <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p> -->
       </div>
     </div>
   </div>
