@@ -1,9 +1,9 @@
 
     <% if @movie.image.present? %>
-    <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
+      <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
       <% else %>
       <%= image_tag("coming_soon.gif", :size => "214x317", :alt => @movie.title) %>
-      <% end %>
+    <% end %>
 
   
 
@@ -35,18 +35,19 @@
     </p> 
 
 
-    <%= link_to "Update BLERGH", edit_movie_path, :class => "btn btn-primary" %>
-
-  </div>  
+    <%= link_to "Update BLERGH", controller: "movies", action: "edit", id: @movie, :class => "btn btn-primary" %>
 
     <p>
-     <%if @movie.draft?%>
+      <%if @movie.draft?%>
         Your draft is waiting for approval
         <%= simple_form_for @movie do |f|%>
           <%= f.button :submit, "Submit post" %>
         <% end %>
+      <% else %>
+        Movie is submitted. 
       <% end %>
     </p>
+  </div>  
 
   <div class="col-md-10" >
   <h3>Reviews</h3>
@@ -59,6 +60,7 @@
 <% @movie.reviews.each do |review| %>
   <div id="user_<%= review.user_id %>">
     <%= simple_form_for [review, @vote] do |f| %>
+      <div id="upvote">
         <%= f.hidden_field :value, value: 1 %>
         <%= f.button :submit, "+" %>
       </div>

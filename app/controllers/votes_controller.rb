@@ -5,14 +5,12 @@ class VotesController < ApplicationController
     @vote = @voteable.votes.new(vote_params)
     @vote.user = current_user
     @movie = @voteable.movie
-  
     if @vote.save
       redirect_to movie_path(@movie)
     else
       flash[:notice] = "You can only vote once in either direction." 
       render template: "movies/show"
     end
-
   end
 
   private

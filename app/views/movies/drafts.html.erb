@@ -1,23 +1,8 @@
-<h1>Movies</h1>
-
-
-<%= search_form_for @search do |f| %>
- <div class="field">
-  <%= f.label :title_or_cast_or_description_or_director_cont, "Search" %>
-  <%= f.text_field :title_or_cast_or_description_or_director_cont %>
-  </div>
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-
-<% if @movies.length == 0 %>
-  <div class="alert">Sorry your search has no results</div>
-<% end %>
-
-
+<h1>Movie Drafts</h1>
 
 <div class="row">
 
-  <% @movies.each do |movie| %>
+  <% @movie_drafts.each do |movie| %>
   <div class="col-sm-3 col-md-3 col-lg-3">
     <div class="thumbnail">
       <% if movie.image.present? %>
@@ -35,6 +20,7 @@
   <% end %>
 </div>
 
+
 <div>
-  <%= paginate @movies %>
+  <%= paginate @movie_drafts %>
 </div>
