@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
     #
     # In Heroku, follow http://devcenter.heroku.com/articles/config-vars
     #
- 
+    
     # Configuration for Amazon S3
     :provider              => 'AWS',
     :aws_access_key_id     => 'S3_KEY',
@@ -27,4 +27,5 @@ CarrierWave.configure do |config|
   config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
  
   config.fog_directory    = ENV['letsgo2themovies']
+
 end
