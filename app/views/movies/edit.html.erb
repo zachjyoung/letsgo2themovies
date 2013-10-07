@@ -1,0 +1,11 @@
+<h1> Edit <%= @movie.title %></h1>
+
+<%= simple_form_for @movie do |f|%>
+  <%= f.input :image %>
+  <%= f.input :title  %>
+  <%= f.input :year  %>
+  <%= f.input :description  %>
+  <%= f.input :director  %>
+  <%= f.input :cast  %>
+  <%= f.button :submit %>
+<% end %>

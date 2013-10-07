@@ -2,11 +2,28 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @movies = Movie.where(state: "submitted")
+    @movies = Movie.all 
+    @search = Movie.search(params[:q])
+    @movies = @search.result.where(state: "submitted")
+    # @movies = Movie.where(state: "submitted")
+
   end
   
   def new
     @movie = Movie.new
+  end
+
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      redirect_to movie_path(@movie), notice: 'Movie was successfully updated.' 
+    else
+      render action: 'edit'
+    end
   end
 
   def create

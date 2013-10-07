@@ -57,6 +57,8 @@ gem 'carrierwave'
 
 gem "fog"
 
+gem 'ransack'
+
 
 #bootstrap
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
