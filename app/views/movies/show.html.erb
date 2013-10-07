@@ -31,9 +31,17 @@
     <p>
       <strong>Cast</strong>
       <%= @movie.cast %>
-    </p>
+    </p> 
 
-  </div>  
+    <p>
+     <%if @movie.draft?%>
+        Your draft is waiting for approval
+        <%= simple_form_for @movie do |f|%>
+          <%= f.button :submit, "Submit post" %>
+        <% end %>
+      <% end %>
+    </p>
+  </div> 
 
   <div class="col-md-10" >
   <h3>Reviews</h3>
