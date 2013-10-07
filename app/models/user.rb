@@ -9,5 +9,8 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :votes  
 
+  validates_uniqueness_of :username
+  validates_presence_of :username
+
 
 end

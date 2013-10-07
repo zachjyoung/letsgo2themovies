@@ -11,6 +11,8 @@ describe Review do
   it { should_not have_valid(:vote_count).when(nil, "", "DURP")}
 
   it {should belong_to(:movie)}
+
+
   it {should belong_to(:user)}
   it {should have_many(:votes)}
 

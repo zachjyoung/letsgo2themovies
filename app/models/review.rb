@@ -11,6 +11,8 @@ class Review < ActiveRecord::Base
   validates_numericality_of :rating
   validates_numericality_of :vote_count
 
+
+
   def self.ratings
     (1..5).to_a
   end
