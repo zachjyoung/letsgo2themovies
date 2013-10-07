@@ -9,6 +9,10 @@
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
+<% if @movies.length == 0 %>
+ <div class="alert">Sorry your search has no results</div>
+
+ <% end %>
 
 <div class="row">
   <% @movies.each do |movie| %>

@@ -4,6 +4,7 @@
       <% else %>
       <%= image_tag("coming_soon.gif", :size => "214x317", :alt => @movie.title) %>
       <% end %>
+
   
 
   <div class="col-md-7" >
@@ -32,6 +33,9 @@
       <strong>Cast</strong>
       <%= @movie.cast %>
     </p>
+
+
+    <%= link_to "Update BLERGH", edit_movie_path, :class => "btn btn-primary" %>
 
   </div>  
 

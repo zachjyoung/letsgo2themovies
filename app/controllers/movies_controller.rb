@@ -11,6 +11,19 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      redirect_to movie_path(@movie), notice: 'Movie was successfully updated.' 
+    else
+      render action: 'edit'
+    end
+  end
+
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
