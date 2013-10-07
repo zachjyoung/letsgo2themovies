@@ -1,5 +1,15 @@
 <h1>Movies</h1>
 
+
+<%= search_form_for @search do |f| %>
+ <div class="field">
+  <%= f.label :title_or_cast_or_description_or_director_cont, "Search" %>
+  <%= f.text_field :title_or_cast_or_description_or_director_cont %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+
 <div class="row">
   <% @movies.each do |movie| %>
   <div class="col-sm-3 col-md-3 col-lg-3">

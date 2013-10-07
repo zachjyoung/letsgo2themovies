@@ -56,6 +56,8 @@ gem 'carrierwave'
 
 gem "fog"
 
+gem 'ransack'
+
 
 #bootstrap
 

@@ -1,4 +1,4 @@
- <div class="row">
+
     <% if @movie.image.present? %>
     <%= image_tag(@movie.image_url.to_s, :size => "214x317")%>
       <% else %>
@@ -45,13 +45,10 @@
 
 
 
-    </div>
-</div>
 
 <% @movie.reviews.each do |review| %>
   <div id="user_<%= review.user_id %>">
     <%= simple_form_for [review, @vote] do |f| %>
-      <div id="upvote"> 
         <%= f.hidden_field :value, value: 1 %>
         <%= f.button :submit, "+" %>
       </div>
@@ -68,6 +65,8 @@
   <%= review.user.username %>
   <%= review.rating%>
   <%= review.body%>
-  </div>
 <% end %>
+</div>
+
+
 
