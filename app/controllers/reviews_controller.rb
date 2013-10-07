@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
+  
   def new
     @movie = Movie.find(params[:movie_id])
     @review = Review.new

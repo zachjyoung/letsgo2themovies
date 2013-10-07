@@ -13,6 +13,7 @@ feature 'User adds review to individual movie page', %Q{
 # * User is given an option select nth stars out of 5 stars
   let(:user) {FactoryGirl.create(:user)}
   let(:movie) {FactoryGirl.create(:movie)}
+
   scenario 'user adds valid review' do
     sign_in_as(user)
     visit movie_path(movie.id)
@@ -26,7 +27,7 @@ feature 'User adds review to individual movie page', %Q{
     expect(new_review.user_id).to eql(user.id)
   end
 
-  scenario 'user adds invlaid review' do
+  scenario 'user adds invaid review' do
     sign_in_as(user)
     visit movie_path(movie.id)
     click_on "Add Review"
