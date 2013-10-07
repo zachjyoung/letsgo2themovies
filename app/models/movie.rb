@@ -11,6 +11,15 @@ class Movie < ActiveRecord::Base
   validates_presence_of :cast
 
   validates_numericality_of :year
-  validates_length_of :description, :minimum => 6 
+  validates_length_of :description, :minimum => 6
+  validates_presence_of :state
+
+  state_machine initial: :draft do
+    event :submit do
+      transition :draft => :submitted
+    end
+  end 
+  
+  
 
 end

@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @movies = Movie.all 
+    @movies = Movie.where(state: "submitted")
   end
   
   def new
@@ -20,7 +20,13 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @reviews = Review.where(movie_id: @movie.id)
+    @vote = Vote.new
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    @movie.submit
+    redirect_to movie_path(@movie)
   end
 
   private

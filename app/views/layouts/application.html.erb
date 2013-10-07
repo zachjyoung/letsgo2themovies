@@ -9,31 +9,75 @@
 <body>
 
 
+ <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Lets Go 2 The Movies</a>
+    </div>
 
-<% if user_signed_in? %>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Add a new movie", new_movie_path %></li>
+        <li><%= link_to "View all movies", movies_path %></li>
+        </li>
+      </ul>
+      <!-- <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+         </li>
+        <li><%= image_tag(current_user.image_url(:thumb).to_s) %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <%= current_user.username %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+              <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
 
 
- Logged in as <strong><%= current_user.email %></strong>.
- <%= link_to 'Edit profile', edit_user_registration_path %> |
- <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
- <%= image_tag(current_user.image_url(:thumb).to_s) %>
-
-<% else %>
- <%= link_to "Sign up", new_user_registration_path %> |
- <%= link_to "Sign in", new_user_session_path %>
+<div class="container middle-body">
+  <div class="row">
+    <div class="col-md-2" >
+      <%= image_tag("testad.gif", :size => "160x700", :alt => "Look at all these shitty ads")%>
+    </div>
 
 
-<% end %>
+    <div class="col-md-8" >
+      <%= notice %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+    </div>
 
-<li><%= link_to "ADDD MOOOOBIES!", new_movie_path %></li>
-<li><%= link_to "MOOOVIES", movies_path %></li>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}" %>
-  <% end %>
+      <div class="col-md-2" >
+        <%= image_tag("testad.gif", :size => "160x700", :alt => "Look at all these shitty ads")%>
+    </div>
+  </div>
+</div>
 
-
-<%= yield %>
 
 </body>
 </html>

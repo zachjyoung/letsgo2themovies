@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -28,6 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'simple_form'
+gem 'state_machine'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :production do 
@@ -54,6 +56,13 @@ gem 'rmagick'
 gem 'carrierwave'
 
 gem "fog"
+
+
+#bootstrap
+
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails'
+gem 'less'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
