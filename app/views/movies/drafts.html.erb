@@ -1,0 +1,26 @@
+<h1>Movie Drafts</h1>
+
+<div class="row">
+
+  <% @movie_drafts.each do |movie| %>
+  <div class="col-sm-3 col-md-3 col-lg-3">
+    <div class="thumbnail">
+      <% if movie.image.present? %>
+      <%= link_to image_tag(movie.image_url(:mini_poster).to_s), movie %>
+      <% else %>
+      <%= link_to image_tag("coming_soon.gif", :size => "140x207", :alt => movie.title), movie %>
+      <% end %>
+      <div class="caption">
+        <%= link_to "#{movie.title}", movie %> 
+        <p><%= truncate(movie.description, length: 50 ) %></p>
+     <!--    <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p> -->
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<div>
+  <%= paginate @movie_drafts %>
+</div>

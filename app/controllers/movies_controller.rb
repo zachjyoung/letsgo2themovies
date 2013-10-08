@@ -2,18 +2,15 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @movies = Movie.all 
-    @search = Movie.search(params[:q])
-    @movies = @search.result.where(state: "submitted")
-   
-
+    @movies = Movie.where(state: "submitted").page(params[:page]).per(10)
+    @search = Movie.search(params[:q]
   end
   
   def new
     @movie = Movie.new
   end
 
-  def edit
+  def edit  
     @movie = Movie.find(params[:id])
   end
 
@@ -44,6 +41,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie.submit
     redirect_to movie_path(@movie)
+  end
+
+  def drafts
+    @movie_drafts = Movie.where(state: "draft").page(params[:page]).per(10)
+    @search = Movie.search(params[:q])
   end
 
   private
