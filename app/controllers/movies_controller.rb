@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.where(state: "submitted").page(params[:page]).per(10)
-    @search = Movie.search(params[:q]
+    @search = Movie.search(params[:q])
   end
   
   def new
